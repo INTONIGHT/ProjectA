@@ -6,7 +6,6 @@ public class Converter {
 	public static double collectQuantity() {
 		Scanner userInput = new Scanner(System.in);
 		double userQuantity = userInput.nextDouble();
-		//userInput.close();
 		return userQuantity;
 	}
 	public static int collectChoice() {
@@ -16,12 +15,24 @@ public class Converter {
 		//program So im sure i dont want to close it here
 		return userOption;
 	}
+	public static double convertGallons(double gallons) {
+		double liters = gallons * 3.78541;
+		return liters;
+	}
+	public static double convertFaren(double farenheit) {
+		double celsius = (farenheit -32) * 5/9;
+		return celsius;
+	}
+	public static double convertMiles(double miles) {
+		double kilometers = miles * 1.60934;
+		return kilometers;
+	}
 	public static void main(String[] args) {
 		int menuSelection = 0;
 		double quantity = 0;
 		
 		//declaring an array of choices to chose from
-		//could add meters to feet and incehs to cm
+		//could add meters to feet and inches to cm
 		//and lb to kg
 		String[] listChoices = {"1.Gallons to Liters",
 				"2.Farenheit to Celsius",
@@ -40,19 +51,19 @@ public class Converter {
 			case 1: 
 				System.out.println("Please select the amount of gallons you wish to convert");
 				quantity = collectQuantity();
-				double liters = quantity * 3.78541;
+				double liters = convertGallons(quantity);
 				System.out.println("The amount of liters is " + liters);
 				break;
 			case 2:
 				System.out.println("Please chose temperature");
 				quantity = collectQuantity();
-				double temp = (quantity -32) * 5/9;
+				double temp = convertFaren(quantity);
 				System.out.println("The temperature in celsius is "+ temp);
 				break;
 			case 3 :
 				System.out.println("Please chose Miles");
 				quantity = collectQuantity();
-				double kilometers = quantity * 1.60934;
+				double kilometers = convertMiles(quantity);
 				System.out.println("The amount of kilometers is " + kilometers);
 				break;
 			default :
